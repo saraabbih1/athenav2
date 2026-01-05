@@ -31,4 +31,5 @@ switch ($page) {
 
     default:
         echo "Page not found";
+        
 }

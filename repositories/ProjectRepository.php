@@ -29,6 +29,7 @@ class ProjectRepository
         $project->setId($id);
         return $project;                                                                                                                                                                                                       
     }
+    
 
     // afficher tous les projets
     public function getAll()

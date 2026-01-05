@@ -26,6 +26,7 @@ class TaskRepository
         ]);
          $id = (int) $this->db->lastInsertId();
         $task->setId($id);
+        
         return $task; 
     }
 

@@ -35,6 +35,7 @@ class SprintRepository
         $sql = "SELECT * FROM sprints WHERE project_id = ?";
         $stmt = $this->db->prepare($sql);
         $stmt->execute([$projectId]);
+        
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
