@@ -1,36 +1,34 @@
 <?php
 session_start();
-?>
 
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Scrum Project Management</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+$page = isset($_GET['page']) ? $_GET['page'] : 'login';
 
-<h1>Scrum Project Management System</h1>
+// router
+switch ($page) {
 
-<?php if (isset($_SESSION['user'])): ?>
-    
-    <p>Bienvenue <?= $_SESSION['user']->getName(); ?></p>
-    <p>Rôle : <?= $_SESSION['user']->getRole(); ?></p>
+    case 'login':
+        require_once 'views/login.php';
+        break;
 
-    <ul>
-        <li><a href="../views/projects.php">Projets</a></li>
-        <li><a href="../views/sprints.php">Sprints</a></li>
-        <li><a href="../views/tasks.php">Tâches</a></li>
-        <li><a href="../views/logout.php">Logout</a></li>
-    </ul>
+    case 'projects':
+        require_once 'views/projects.php';
+        break;
 
-<?php else: ?>
+    case 'sprints':
+        require_once 'views/sprints.php';
+        break;
 
-    <p>Vous n'êtes pas connecté</p>
-    <a href="../views/login.php">Login</a>
+    case 'tasks':
+        require_once 'views/tasks.php';
+        break;
 
-<?php endif; ?>
+    case 'logout':
+        require_once 'services/Auth.php';
+        $auth = new Auth();
+        $auth->logout();
+        header("Location: index.php?page=login");
+        exit;
 
-</body>
-</html>
+    default:
+        echo "Page not found";
+}

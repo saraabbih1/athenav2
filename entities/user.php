@@ -1,6 +1,6 @@
 <?php
 class user {
-    protected $id;
+    protected ? int $id=NULL;
     protected $name;
     protected $email;
     protected $password;
@@ -8,10 +8,10 @@ class user {
     protected $active;
      
 
-    public function __construct($id,$name,$email,$password,$role,$active)
+    public function __construct($name,$email,$password,$role,$active)
 
     {
-      $this-> id =$id;
+     
       $this-> name =$name;
       $this-> email=$email;
       $this-> password=$password;
@@ -62,6 +62,9 @@ class user {
 
     public function setActive( $active){
         $this->active = $active;
+    }
+    public function setId($id){
+        $this->id=$id;
     }
 
 }

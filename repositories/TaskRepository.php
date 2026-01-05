@@ -24,6 +24,9 @@ class TaskRepository
             $task->getStatus(),
             $task->getAssignedTo()
         ]);
+         $id = (int) $this->db->lastInsertId();
+        $task->setId($id);
+        return $task; 
     }
 
     // tasks d'un sprint

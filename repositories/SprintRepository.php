@@ -24,6 +24,9 @@ class SprintRepository
             $sprint->getStartDate(),
             $sprint->getEndDate()
         ]);
+         $id = (int) $this->db->lastInsertId();
+        $sprint->setId($id);
+        return $sprint; 
     }
 
     // récupérer sprints d'un projet

@@ -2,15 +2,14 @@
 
 class Sprint
 {
-    protected int $id;
+    protected ? int $id=NULL;
     protected int $projectId;
     protected string $name;
     protected string $startDate;
     protected string $endDate;
 
     public function __construct(
-         $id , $projectId , $name, $startDate , $endDate) {
-        $this->id        = $id;
+          $projectId , $name, $startDate , $endDate) {
         $this->projectId = $projectId;
         $this->name      = $name;
         $this->startDate = $startDate;
@@ -48,5 +47,8 @@ class Sprint
 
     public function setEndDate( $endDate){
         $this->endDate = $endDate;
+    }
+    public function setId($id){
+        $this->id=$id;
     }
 }

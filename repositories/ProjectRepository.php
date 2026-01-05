@@ -18,13 +18,16 @@ class ProjectRepository
                 VALUES (?, ?, ?, ?)";
         $stmt = $this->db->prepare($sql);
 
-        return $stmt->execute([
+        $stmt->execute([
             $project->getName(),
             $project->getDescription(),
            $project->getManagerId(),
         $project->isActive(),
         $project->getCreatedAt()
         ]);
+        $id = (int) $this->db->lastInsertId();
+        $project->setId($id);
+        return $project;                                                                                                                                                                                                       
     }
 
     // afficher tous les projets

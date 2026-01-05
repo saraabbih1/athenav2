@@ -2,16 +2,15 @@
 
 class Project
 {
-    protected  $id;
+    protected ?int $id = null;
     protected  $name;
     protected $description;
     protected  $managerId;  
     protected  $active;
     protected $createdAt;
 
-    public function __construct($id,$name,$description,$managerId,$active,$createdAt)
+    public function __construct($name,$description,$managerId,$active,$createdAt)
     {
-        $this->id          = $id;
         $this->name        = $name;
         $this->description = $description;
         $this->managerId   = $managerId;
@@ -59,5 +58,8 @@ class Project
 
     public function setActive( $active) {
         $this->active = $active;
+    }
+    public function setId($id) {
+        $this->id = $id;
     }
 }

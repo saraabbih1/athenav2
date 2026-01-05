@@ -2,7 +2,7 @@
 
 class Task
 {
-    protected int $id;
+    protected ? int  $id=NULL;
     protected int $sprintId;
     protected int $assignedTo;   
     protected string $title;
@@ -11,8 +11,7 @@ class Task
     protected string $priority;  
     protected string $createdAt;
 
-    public function __construct( $id ,$sprintId ,$assignedTo,$title ,$description , $status , $priority , $createdAt ) {
-        $this->id          = $id;
+    public function __construct( $sprintId ,$assignedTo,$title ,$description , $status , $priority , $createdAt ) {
         $this->sprintId    = $sprintId;
         $this->assignedTo  = $assignedTo;
         $this->title       = $title;
@@ -73,5 +72,8 @@ class Task
 
     public function setAssignedTo(int $userId){
         $this->assignedTo = $userId;
+    }
+    public function setId($id){
+        $this->id=$id;
     }
 }
