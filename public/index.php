@@ -2,6 +2,10 @@
 session_start();
 
 $page = isset($_GET['page']) ? $_GET['page'] : 'login';
+if(!isset($_SESSION["user_id"])&&$page !=='login'){
+    header("location: index.php?page=login");
+    exit;
+}
 
 // router
 switch ($page) {
@@ -23,13 +27,12 @@ switch ($page) {
         break;
 
     case 'logout':
-        require_once 'services/Auth.php';
-        $auth = new Auth();
-        $auth->logout();
+       session_destroy();
         header("Location: index.php?page=login");
         exit;
 
     default:
-        echo "Page not found";
-        
+        echo "Page n'exist pas";
+
 }
+

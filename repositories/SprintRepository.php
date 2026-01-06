@@ -39,4 +39,10 @@ class SprintRepository
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+     // afficher tous les sprints
+    public function getAll()
+    {
+        $sql = "SELECT * FROM sprint";
+        return $this->db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
