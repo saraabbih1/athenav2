@@ -25,6 +25,23 @@ switch ($page) {
     case 'tasks':
         require_once 'views/tasks.php';
         break;
+        
+     case 'dashboard':
+    require_once 'views/dashboard.php';
+    break;
+    
+    case 'project_create':
+    require_once 'views/project_create.php';
+    break;
+
+case 'project_edit':
+    require_once 'views/project_edit.php';
+    break;
+
+case 'project_delete':
+    require_once 'services/project_delete.php';
+    break;
+
 
     case 'logout':
        session_destroy();

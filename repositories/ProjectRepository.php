@@ -29,7 +29,36 @@ class ProjectRepository
         $project->setId($id);
         return $project;                                                                                                                                                                                                       
     }
-    
+    // chercher projet par id
+public function getById($id)
+{
+    $sql = "SELECT * FROM projects WHERE id = ?";
+    $stmt = $this->db->prepare($sql);
+    $stmt->execute([$id]);
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
+// update
+public function update(Project $project)
+{
+    $sql = "UPDATE projects SET name=?, description=? WHERE id=?";
+    $stmt = $this->db->prepare($sql);
+
+    return $stmt->execute([
+        $project->getName(),
+        $project->getDescription(),
+        $project->getId()
+    ]);
+}
+
+// delete
+public function delete($id)
+{
+    $sql = "DELETE FROM projects WHERE id=?";
+    $stmt = $this->db->prepare($sql);
+    return $stmt->execute([$id]);
+}
+
 
     // afficher tous les projets
     public function getAll()

@@ -3,10 +3,11 @@ $host = "localhost";
 $db   = "athena";
 $user = "root";
 $pass = "root";
+$port = "3307";
 
 try {
     $pdo = new PDO(
-        "mysql:host=$host;dbname=$db;charset=utf8",
+        "mysql:host=$host;port=$port;dbname=$db;charset=utf8",
         $user,
         $pass
     );

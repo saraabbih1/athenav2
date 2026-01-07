@@ -1,7 +1,6 @@
 <?php
-session_start();
 require_once __DIR__."/../core/Database.php";
-require_once __DIR__ . '/../services/Auth.php';
+require_once __DIR__ . '/../core/Auth.php';
 
 $auth = new Auth();
 $error = "";
@@ -25,7 +24,7 @@ if (isset($_POST["login"])) {
             $_SESSION["user_id"] = $user["id"];
             $_SESSION["role"] = $user["role"];
 
-            header("Location: dashboard.php");
+            header("Location: index.php?page=dashboard.php");
             exit;
 
         } else {
