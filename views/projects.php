@@ -17,7 +17,7 @@ $projects = $projectRepo->getAll();
 
 <h2>Liste des projets</h2>
 
-<a href="../public/index.php"><- Retour</a>
+<a href="athenav2/index.php"><- Retour</a>
 
 <ul>
 <?php foreach ($projects as $project): ?>

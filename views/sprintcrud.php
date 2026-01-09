@@ -60,7 +60,6 @@ $sprints = $db->query("SELECT * FROM sprints")->fetchAll(PDO::FETCH_ASSOC);
 
 <h2>Sprints</h2>
 
-<!--FORM ADD / EDIT  -->
 <form method="POST">
     <input type="text" name="name" placeholder="Sprint name"
            value="<?= $editSprint['name'] ?? '' ?>" required>
@@ -85,7 +84,7 @@ $sprints = $db->query("SELECT * FROM sprints")->fetchAll(PDO::FETCH_ASSOC);
 
 <hr>
 
-<!--  TABLE  -->
+
 <table border="1" cellpadding="6">
 <tr>
     <th>Name</th>

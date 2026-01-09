@@ -1,70 +1,51 @@
 <?php
-class user {
-    protected ? int $id=NULL;
-    protected $name;
-    protected $email;
-    protected $password;
-    protected $role;
-    protected $active;
-     
 
-    public function __construct($name,$email,$password,$role,$active)
+class User
+{
+    private $id;
+    private $name;
+    private $email;
+    private $password;
+    private $role;
+    private $status;
+    private $created_at;
 
+    public function __construct($name, $email, $password, $role = 'member')
     {
-     
-      $this-> name =$name;
-      $this-> email=$email;
-      $this-> password=$password;
-      $this-> role=$role;
-      $this->active=$active;
-    }
-     public function getId() {
-        return $this->id;
+        $this->name     = $name;
+        $this->email    = $email;
+        $this->password = $password;
+        $this->role     = $role;
+        $this->status   = true; 
     }
 
-    public function getName(){
+    public function getName()
+    {
         return $this->name;
     }
 
-    public function getEmail(){
+    public function getEmail()
+    {
         return $this->email;
     }
 
-    public function getPassword(){
+    public function getPassword()
+    {
         return $this->password;
     }
 
-    public function getRole(){
+    public function getRole()
+    {
         return $this->role;
     }
 
-    public function isActive(){
-        return $this->active;
+    public function isActive()
+    {
+        return $this->status;
     }
 
-
-
-     public function setName( $name){
-        $this->name = $name;
+    public function setStatus($status)
+    {
+        $this->status = $status;
     }
-
-    public function setEmail( $email){
-        $this->email = $email;
-    }
-
-    public function setPassword( $password) {
-        $this->password = password_hash($password, PASSWORD_DEFAULT);
-    }
-
-    public function setRole( $role){
-        $this->role = $role;
-    }
-
-    public function setActive( $active){
-        $this->active = $active;
-    }
-    public function setId($id){
-        $this->id=$id;
-    }
-
 }

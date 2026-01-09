@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS sprints(
     end_date DATE NOT NULL,
     Foreign Key (project_id) REFERENCES projects(id) on DELETE CASCADE
 );
-CREATE TABLE IF NOT EXISTS tasks (
+CREATE TABLE IF NOT EXISTS tasks(
     id INT AUTO_INCREMENT PRIMARY KEY ,
     sprint_id INT NOT NULL ,
     title VARCHAR(150),

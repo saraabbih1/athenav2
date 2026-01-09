@@ -4,7 +4,7 @@ class Auth
 {
     public function __construct()
     {
-        session_start();
+        
     }
 
     public function login($user)
@@ -14,7 +14,7 @@ class Auth
 
     public function logout()
     {
-        session_destroy();
+      
     }
 
     public function check()
