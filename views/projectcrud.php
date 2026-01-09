@@ -5,13 +5,7 @@ require_once __DIR__ . "/../core/Database.php";
 $db = Database::connect();
 $action = $_GET['action'] ?? null;
 
-/* delet */
-if ($action === 'delete' && isset($_GET['id'])) {
-    $stmt = $db->prepare("DELETE FROM projects WHERE id=?");
-    $stmt->execute([$_GET['id']]);
-    header("Location: index.php?page=projects");
-    exit;
-}
+
 
 /*  CREATE  */
 if (isset($_POST['add'])) {
@@ -38,7 +32,13 @@ if (isset($_POST['update'])) {
         $_POST['id']
     ]);
 }
-
+/* delet */
+if ($action === 'delete' && isset($_GET['id'])) {
+    $stmt = $db->prepare("DELETE FROM projects WHERE id=?");
+    $stmt->execute([$_GET['id']]);
+    header("Location: index.php?page=projects");
+    exit;
+}
 /* get one for edit */
 $editProject = null;
 if ($action === 'edit' && isset($_GET['id'])) {
@@ -93,8 +93,8 @@ $projects = $db->query("SELECT * FROM projects")->fetchAll(PDO::FETCH_ASSOC);
     <td><?= $p['description'] ?></td>
     <td><?= $p['manager_id'] ?></td>
     <td>
-        <a href="index.php?page=projects&action=edit&id=<?= $p['id'] ?>">✏️</a>
-        <a href="index.php?page=projects&action=delete&id=<?= $p['id'] ?>">🗑️</a>
+        <a href="index.php?page=projects&action=edit&id=<?= $p['id'] ?>">modifie</a>
+        <a href="index.php?page=projects&action=delete&id=<?= $p['id'] ?>">suprime</a>
     </td>
 </tr>
 <?php endforeach; ?>

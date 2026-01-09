@@ -42,7 +42,7 @@ class TaskRepository
      // afficher tous les tasks
     public function getAll()
     {
-        $sql = "SELECT * FROM task";
+        $sql = "SELECT * FROM tasks";
         return $this->db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     }
 }
