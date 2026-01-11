@@ -3,28 +3,33 @@
 class Project
 {
     protected ?int $id = null;
-    protected  $name;
+    protected  $title;
     protected $description;
-    protected  $managerId;  
+    protected  $managerId; 
+    protected $startDate;
+    protected $endDate; 
     protected  $active;
-    protected $createdAt;
+   
 
-    public function __construct($name,$description,$managerId,$active,$createdAt)
+    public function __construct($title,$description,$managerId,$endDate,$startDate,$active)
     {
-        $this->name        = $name;
+        $this->title       = $title;
         $this->description = $description;
         $this->managerId   = $managerId;
+        $this->startDate   = $startDate;
+        $this->endDate     =$endDate;
         $this->active      = $active;
-        $this->createdAt   = $createdAt;
-    }
+
+    }  
+    
 
   
     public function getId(){
         return $this->id;
     }
 
-    public function getName(){
-        return $this->name;
+    public function getTitle(){
+        return $this->title;
     }
 
     public function getDescription(){
@@ -39,13 +44,17 @@ class Project
         return $this->active;
     }
 
-    public function getCreatedAt() {
-        return $this->createdAt;
-    }
+   public function getEndDate() {
+     return $this->endDate;
+     }
 
+
+     public function getstartDate() { 
+        return $this->startDate; 
+    }
     
-    public function setName( $name){
-        $this->name = $name;
+    public function setTitle( $title){
+        $this->title = $title;
     }
 
     public function setDescription( $description){

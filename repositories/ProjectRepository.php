@@ -14,50 +14,51 @@ class ProjectRepository
     // créer projet
     public function create(Project $project)
     {
-        $sql = "INSERT INTO projects (name, description, start_date, end_date)
-                VALUES (?, ?, ?, ?)";
+        $sql = "INSERT INTO projects (title, description,manager_id, start_date, end_date,active)
+                VALUES (?, ?, ?, ?,?)";
         $stmt = $this->db->prepare($sql);
 
         $stmt->execute([
-            $project->getName(),
+            $project->getTitle(),
             $project->getDescription(),
-           $project->getManagerId(),
-        $project->isActive(),
-        $project->getCreatedAt()
+            $project->getManagerId(),
+            $project->getstartDate(),
+            $project->getEndDate(),
+            $project->isActive(),
         ]);
         $id = (int) $this->db->lastInsertId();
         $project->setId($id);
-        return $project;                                                                                                                                                                                                       
+        return $project;
     }
     // chercher projet par id
-public function getById($id)
-{
-    $sql = "SELECT * FROM projects WHERE id = ?";
-    $stmt = $this->db->prepare($sql);
-    $stmt->execute([$id]);
-    return $stmt->fetch(PDO::FETCH_ASSOC);
-}
+    public function getById($id)
+    {
+        $sql = "SELECT * FROM projects WHERE id = ?";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([$id]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 
-// update
-public function update(Project $project)
-{
-    $sql = "UPDATE projects SET name=?, description=? WHERE id=?";
-    $stmt = $this->db->prepare($sql);
+    // update
+    public function update(Project $project)
+    {
+        $sql = "UPDATE projects SET title=?, description=? WHERE id=?";
+        $stmt = $this->db->prepare($sql);
 
-    return $stmt->execute([
-        $project->getName(),
-        $project->getDescription(),
-        $project->getId()
-    ]);
-}
+        return $stmt->execute([
+            $project->getTitle(),
+            $project->getDescription(),
+            $project->getId()
+        ]);
+    }
 
-// delete
-public function delete($id)
-{
-    $sql = "DELETE FROM projects WHERE id=?";
-    $stmt = $this->db->prepare($sql);
-    return $stmt->execute([$id]);
-}
+    // delete
+    public function delete($id)
+    {
+        $sql = "DELETE FROM projects WHERE id=?";
+        $stmt = $this->db->prepare($sql);
+        return $stmt->execute([$id]);
+    }
 
 
     // afficher tous les projets
